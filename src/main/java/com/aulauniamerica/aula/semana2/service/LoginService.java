@@ -75,6 +75,9 @@ public class LoginService {
         if (!login.getSenha().equals(loginAccountRequest.getSenha())){
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Senha está incorreta");
         }
+        if(!login.getNome().equals(loginAccountRequest.getNome())){
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Nome inserido está incorreto");
+        }
 
         return new LoginAccountResponse(login.getNome(), "Login realizado com sucesso!");
     }
